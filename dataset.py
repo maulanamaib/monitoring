@@ -16,6 +16,6 @@ def modell(x):
     # return data_test yang sudah dinormalisasi
     return joblib.load('data/nana.sav').fit_transform(data_test)
 
-def svr(x):
+def kmeans(x):
     
-    return joblib.load('data/SVRmodel.pkl').predict(x)
+    return joblib.load('data/KmeansModel.pkl').predict(x)
