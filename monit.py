@@ -48,11 +48,13 @@ with col1:
 with col2:
     suhusen = st.number_input("Masukkan Suhu(sensor)")
 
+
 col3,col4 =st.columns(2)
 with col3:    
    phmet = st.number_input("Masukkan pH(ph meter)")
 with col4:
       phsen = st.number_input("masukkan pH(ph sensor)")
+
 columns = st.columns((2,3))
 
 
@@ -77,6 +79,7 @@ if submit:
         "pH(sensor)": phsen,
         "Klasifikasi": data[-1]
     })
+
 
 
 suhumanual = data1['Temperature (°C)']
