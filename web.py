@@ -13,11 +13,11 @@ import streamlit.components.v1 as components
 
 
 st.write("")
-    st.markdown("<h1 style='text-align: center; color: white; margin:0 ; padding:0;'>Tabel Sensor Suhu</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: white; margin:0 ; padding:0;'>Tabel Sensor Suhu</h1>", unsafe_allow_html=True)
 
 data = pd.read_csv('https://raw.githubusercontent.com/maulanamaib/monitoring/master/data/data.csv')
-    data.fillna(0,inplace=True)
-    data
+data.fillna(0,inplace=True)
+data
     
 data1 = dataset.modell(data)
 prediksi = dataset.svr(data1)  
