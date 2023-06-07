@@ -49,7 +49,7 @@ with st.sidebar:
 # """## Pengumpulan Data"""
 col1, col2 = st.columns(2)
 with col1:
-      suhuter = st.number_input("Masukkan Suhu(termometer)",placeholder='Suhu Termometer',min_valu=0,max_value=50)
+      suhuter = st.number_input("Masukkan Suhu(termometer)",placeholder='Suhu Termometer',min_value=0,max_value=50)
 with col2:
       uhusen = st.number_input("Masukkan Suhu(sensor)",placeholder='Suhu Sensor',min_value=0, max_value=50)
     
