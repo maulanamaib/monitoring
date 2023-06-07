@@ -57,7 +57,7 @@ with col2:
 #     bp = st.selectbox("Golongan Darah",("A","B","AB","O"))
 col3,col4 =st.columns(2)
 with col3:    
-      phmet = st.number_input("Masukkan pH(ph meter)",min_value=0, max_value=)50
+      phmet = st.number_input("Masukkan pH(ph meter)",min_value=0, max_value=50)
 with col4:
       phsen = st.number_input("masukkan pH(ph sensor)", min_value=0 ,max_value=50)
         # col5, col6, col7, col8 = st.columns(4)
