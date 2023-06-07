@@ -50,7 +50,7 @@ with st.sidebar:
 # with tab1:
 col1, col2 = st.columns(2)
 with col1:
-    suhuter = st.number_input("Masukkan Suhu(termometer)",min_value=0,max_value=50)
+    suhuter = st.number_input("Masukkan Suhu(termometer)")
 with col2:
     suhusen = st.number_input("Masukkan Suhu(sensor)",min_value=0, max_value=50)
 
