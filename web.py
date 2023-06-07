@@ -30,21 +30,21 @@ data2 = data2.head(500)
 # data 1 adalah manual sedangkan data 2 adalah data dari alat
 print(len(data1) , len(data2))
 with st.sidebar:
-selected = option_menu(
-    options=["Dataset", "Prepocessing", "Pelabelan", "Klasifikasi"],
-    icons=["book","cast", "book", "envelope"],
-    default_index=0,
-    orientation="horizontal",
-    styles={
-        "container":{"padding":"0!important", "background-color":"#ffffff",},
-        "icons":{"font-size":"14px"},
-        "nav-link":{"font-size":"15px",
-            "text-align":"center",
-            "margin":"0px",
-            "--hover-color":"#eee",
-        },
-    }
-)
+    selected = option_menu(
+        options=["Dataset", "Prepocessing", "Pelabelan", "Klasifikasi"],
+        icons=["book","cast", "book", "envelope"],
+        default_index=0,
+        orientation="horizontal",
+        styles={
+            "container":{"padding":"0!important", "background-color":"#ffffff",},
+            "icons":{"font-size":"14px"},
+            "nav-link":{"font-size":"15px",
+                "text-align":"center",
+                "margin":"0px",
+                "--hover-color":"#eee",
+            },
+        }
+    )
 
 # """## Pengumpulan Data"""
 
