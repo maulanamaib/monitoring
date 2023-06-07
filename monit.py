@@ -57,11 +57,8 @@ submit = columns[1].button("Submit")
 if submit:
     print([suhuter,suhusen,phmet,phsen])
     data = dataset.modell([suhuter,suhusen,phmet,phsen])
-    prediksi = dataset.svr(data)    
-#           # cek prediksi
-    with st.spinner("Tunggu Sebentar Masih Proses..."):
-#             prediksi
-        st.write("Hasil Prediksi : ", prediksi)
+    data = dataset.cluster(data)
+    print(data)
 
 # suhumanual = data1['Temperature (°C)']
 # mean = data2["TEMP"].mean()
