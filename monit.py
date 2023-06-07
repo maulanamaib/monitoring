@@ -88,8 +88,8 @@ columns = st.columns((2,3))
 submit = columns[1].button("Submit")
     # if sumbit and suhuter != 0 and suhusen != 0 and phmet != 0 and phsen != 0:
 if submit:
-    data = dataset.modell([suhuter,suhusen,phmet,phsen])
-    prediksi = dataset.kmeans(data)    
+    df = dataset.modell([suhuter,suhusen,phmet,phsen])
+    prediksi = dataset.kmeans(df)    
                 # cek jenis kelamin
                 #0 = laki-laki
                 #1 = perempuan
