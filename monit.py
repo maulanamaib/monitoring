@@ -52,15 +52,15 @@ col1, col2 = st.columns(2)
 with col1:
     suhuter = st.number_input("Masukkan Suhu(termometer)")
 with col2:
-    suhusen = st.number_input("Masukkan Suhu(sensor)",min_value=0, max_value=50)
+    suhusen = st.number_input("Masukkan Suhu(sensor)")
 
 
     #     bp = st.selectbox("Golongan Darah",("A","B","AB","O"))
 col3,col4 =st.columns(2)
 with col3:    
-   phmet = st.number_input("Masukkan pH(ph meter)",min_value=0, max_value=50)
+   phmet = st.number_input("Masukkan pH(ph meter)")
 with col4:
-   phsen = st.number_input("masukkan pH(ph sensor)", min_value=0 ,max_value=50)
+   phsen = st.number_input("masukkan pH(ph sensor)")
             # col5, col6, col7, col8 = st.columns(4)
             # with col5:
             #     prot = st.number_input("Masukkan nilai prot")
