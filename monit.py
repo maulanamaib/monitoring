@@ -84,7 +84,7 @@ with col4:
 columns = st.columns((2,3))
 
 
-sumbit = columns[1].button("Submit")
+submit = columns[1].button("Submit")
 # if sumbit and suhuter != 0 and suhusen != 0 and phmet != 0 and phsen != 0:
 if submit:
     data = dataset.modell([suhuter,suhusen,phmet,phsen])
