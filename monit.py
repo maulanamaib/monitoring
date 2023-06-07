@@ -103,8 +103,8 @@ if submit:
                 # prediksi data
 
                 # cek prediksi
-                with st.spinner("Tunggu Sebentar Masih Proses..."):
-                    st.write(prediksi)
+    with st.spinner("Tunggu Sebentar Masih Proses..."):
+        st.write(prediksi)
     #             if prediksi[-1]== 0:
     #                     # time.sleep(1)
     #                 st.success("Hasil Prediksi : "+nama+" dengan golongna darah  "+bp+"  sehat!!")
