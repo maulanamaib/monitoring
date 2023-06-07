@@ -19,6 +19,6 @@ data = pd.read_csv('https://raw.githubusercontent.com/maulanamaib/monitoring/mas
 data.fillna(0,inplace=True)
 data
     
-data1 = dataset.modell([data])
-prediksi = dataset.svr(data1)  
-prediksi
+# data1 = dataset.modell([data])
+# prediksi = dataset.svr(data1)  
+# prediksi
