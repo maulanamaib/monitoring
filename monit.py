@@ -48,18 +48,18 @@ with st.sidebar:
 
 # """## Pengumpulan Data"""
 col1, col2 = st.columns(2)
-    with col1:
-        suhuter = st.number_input("Masukkan Suhu(termometer)",placeholder='Suhu Termometer',min_valu=0,max_value=50)
-    with col2:
-        suhusen = st.number_input("Masukkan Suhu(sensor)",placeholder='Suhu Sensor',min_value=0, max_value=50)
+with col1:
+      suhuter = st.number_input("Masukkan Suhu(termometer)",placeholder='Suhu Termometer',min_valu=0,max_value=50)
+with col2:
+      uhusen = st.number_input("Masukkan Suhu(sensor)",placeholder='Suhu Sensor',min_value=0, max_value=50)
     
 
 #     bp = st.selectbox("Golongan Darah",("A","B","AB","O"))
-    col3,col4 =st.columns(2)
-    with col3:    
-          phmet = st.number_input("Masukkan pH(ph meter)",min_value=0, max_value=)50
-    with col4:
-        phsen = st.number_input("masukkan pH(ph sensor)", min_value=0 ,max_value=50)
+col3,col4 =st.columns(2)
+with col3:    
+      phmet = st.number_input("Masukkan pH(ph meter)",min_value=0, max_value=)50
+with col4:
+      phsen = st.number_input("masukkan pH(ph sensor)", min_value=0 ,max_value=50)
         # col5, col6, col7, col8 = st.columns(4)
         # with col5:
         #     prot = st.number_input("Masukkan nilai prot")
@@ -81,9 +81,9 @@ col1, col2 = st.columns(2)
         
         # b = st.number_input("masukkan b")
         #    Centering Butoon 
-    columns = st.columns((2, 0.6, 2))
-    sumbit = columns[1].button("Submit")
-    if sumbit and suhuter != 0 and suhusen != 0 and phmet != 0 and phsen != 0:
+ columns = st.columns((2, 0.6, 2))
+ sumbit = columns[1].button("Submit")
+ if sumbit and suhuter != 0 and suhusen != 0 and phmet != 0 and phsen != 0:
             # cek jenis kelamin
             #0 = laki-laki
             #1 = perempuan
@@ -92,13 +92,13 @@ col1, col2 = st.columns(2)
 #         else:
 #             jk = 1
             # normalisasi data
-        data = dataset.modell([suhuter,suhusen,phmet,phsen])
+data = dataset.modell([suhuter,suhusen,phmet,phsen])
             # data = dataset.normalisasi([10,21,1,3])
             # prediksi data
-        prediksi = dataset.svr(data)    
+prediksi = dataset.svr(data)    
             # cek prediksi
-        with st.spinner("Tunggu Sebentar Masih Proses..."):
-            prediksi
+with st.spinner("Tunggu Sebentar Masih Proses..."):
+prediksi
 #             if prediksi[-1]== 0:
 #                     # time.sleep(1)
 #                 st.success("Hasil Prediksi : "+nama+" dengan golongna darah  "+bp+"  sehat!!")
