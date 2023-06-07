@@ -130,8 +130,8 @@ phauto = data2['pH']
 # proses penggabungan data
 data = pd.concat([suhumanual.rename("Suhu(termometer)"), suhuauto.rename('Suhu(sensor)') ,phmanual.rename('pH(ph meter)'),phauto.rename('pH(sensor)')] , axis=1)
 X = data
-if selected == "Cek Kualitas":
-    tab1
+# if selected == "Cek Kualitas":
+#     tab1
 # #     _, col2, _ = st.columns([1, 1, 1])
 # #     with col2:
 #         st.write('''Cek''')
