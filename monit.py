@@ -82,11 +82,13 @@ with col4:
         # b = st.number_input("masukkan b")
         #    Centering Butoon 
 columns = st.columns((2,3))
-data = dataset.modell([suhuter,suhusen,phmet,phsen])
-prediksi = dataset.svr(data)    
+
+
 sumbit = columns[1].button("Submit")
 # if sumbit and suhuter != 0 and suhusen != 0 and phmet != 0 and phsen != 0:
 if submit:
+    data = dataset.modell([suhuter,suhusen,phmet,phsen])
+    prediksi = dataset.svr(data)    
             # cek jenis kelamin
             #0 = laki-laki
             #1 = perempuan
@@ -101,7 +103,7 @@ if submit:
    
             # cek prediksi
     with st.spinner("Tunggu Sebentar Masih Proses..."):
-       prediksi
+       st.write(prediksi)
 #             if prediksi[-1]== 0:
 #                     # time.sleep(1)
 #                 st.success("Hasil Prediksi : "+nama+" dengan golongna darah  "+bp+"  sehat!!")
