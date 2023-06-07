@@ -22,28 +22,22 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import *
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.svm import SVR
+import pymongo
 
+uri = "mongodb+srv://lalaerha:bp8GlR3fWrH7lL59@cluster0.yyqsrnb.mongodb.net/?retryWrites=true&w=majority"
 data1 = pd.read_csv('https://raw.githubusercontent.com/LALA09-erha/Python-TrainingProject/master/psd/Water%20Quality%20Testing.csv')
 data2 = pd.read_csv('https://raw.githubusercontent.com/LALA09-erha/Python-TrainingProject/master/psd/waterquality.csv', encoding='windows-1252')
+
+
+clnt = pymongo.MongoClient(uri)
+mydb = clnt['data_water']
 
 # menyeleksi hanya 500 data
 data2 = data2.head(500)
 # data 1 adalah manual sedangkan data 2 adalah data dari alat
-print(len(data1) , len(data2))
 with st.sidebar:
     selected = option_menu("Queens Gurame",["Cek Kualitas","Dataset", "Prepocessing", "Pelabelan", "Klasifikasi"],
   icons=["Arrows","book","cast", "book", "envelope"],
-#         default_index=0,
-#         orientation="horizontal",
-#         styles={
-#             "container":{"padding":"0!important", "background-color":"#ffffff",},
-#             "icons":{"font-size":"14px"},
-#             "nav-link":{"font-size":"15px",
-#                 "text-align":"center",
-#                 "margin":"0px",
-#                 "--hover-color":"#eee",
-#             },
-#         }
     )
 # tab1=st.tabs(["Cek Kualitas"])
 # """## Pengumpulan Data"""
@@ -55,71 +49,38 @@ with col2:
     suhusen = st.number_input("Masukkan Suhu(sensor)")
 
 
-    #     bp = st.selectbox("Golongan Darah",("A","B","AB","O"))
 col3,col4 =st.columns(2)
 with col3:    
    phmet = st.number_input("Masukkan pH(ph meter)")
 with col4:
-   phsen = st.number_input("masukkan pH(ph sensor)")
-            # col5, col6, col7, col8 = st.columns(4)
-            # with col5:
-            #     prot = st.number_input("Masukkan nilai prot")
-            # with col6:
-            #     alb = st.number_input("MAsukkan nilai alb")
-            # with col7:
-            #     alp = st.number_input("Masukkan nilai alp")
-            # with col8:
-            #     bil = st.number_input("Masukkan nilai bil")
-            # col9, col10, col11, col12 = st.columns(4)
-            # with col9:
-            #     che = st.number_input("Masukkan nilai che")
-            # with col10:
-            #     chol = st.number_input("Masukkan nilali chol")
-            # with col11:
-            #     crea = st.number_input("Masukkan nilai crea")
-            # with col12:
-            #     a = st.number_input("masukkan a")
+      phsen = st.number_input("masukkan pH(ph sensor)")
 
-            # b = st.number_input("masukkan b")
-            #    Centering Butoon 
 columns = st.columns((2,3))
 
 
 submit = columns[1].button("Submit")
     # if sumbit and suhuter != 0 and suhusen != 0 and phmet != 0 and phsen != 0:
 if submit:
-    df = dataset.modell([suhuter,suhusen,phmet,phsen])
-    prediksi = dataset.kmeans(df)    
-                # cek jenis kelamin
-                #0 = laki-laki
-                #1 = perempuan
-    #         if jk == 'Laki-laki':
-    #             jk = 0
-    #         else:
-    #             jk = 1
-                # normalisasi data
+    temp =[suhuter,suhusen,phmet,phsen]
+    data = dataset.modell([suhuter,suhusen,phmet,phsen])
+    data = dataset.svr(data)
+    data =  np.round(data)
 
-                # data = dataset.normalisasi([10,21,1,3])
-                # prediksi data
+    if(data[-1] == 1):
+        st.write("Hasil Klasifikasi : (Berkualitas Atau Baik)")
+    else:
+        st.write("Hasil Klasifikasi : (Tidak Berkualitas Atau Buruk)")
+    
+    cur = mydb['data']
+    cur.insert_one({
+        "Suhu(termometer)": suhuter,
+        "Suhu(sensor)": suhusen,
+        "pH(ph meter)": phmet,
+        "pH(sensor)": phsen,
+        "Klasifikasi": data[-1]
+    })
 
-                # cek prediksi
-    with st.spinner("Tunggu Sebentar Masih Proses..."):
-        st.write(prediksi)
-    #             if prediksi[-1]== 0:
-    #                     # time.sleep(1)
-    #                 st.success("Hasil Prediksi : "+nama+" dengan golongna darah  "+bp+"  sehat!!")
 
-    #             elif prediksi[-1]==1:
-    #                 st.warning("Hasil Prediksi: "+nama+" kurang sehat")
-    #             elif prediksi[-1]==2:
-    #                 st.warning("Hasil Prediksi: "+nama+" terkena hepatitis")
-    #             elif prediksi[-1]==3:
-    #                 st.warning("Hasil Prediksi: "+nama+"  tekena fibrosis")
-    #             elif prediksi[-1]==4:
-    #                 st.warning("Hasil Prediksi: "+nama+" terkena cirrhosis")          
-    #                 else :  
-    #                     time.sleep(1)
-    #                     st.warning("Hasil Prediksi : "+nama+"  dengan golongan darah "+bp+" Kemungkinan terkena penyakit hepa")
 
 suhumanual = data1['Temperature (°C)']
 mean = data2["TEMP"].mean()
@@ -202,4 +163,3 @@ if selected == "Klasifikasi":
 
     # Result
     st.write(f'svm-regressor-rmse  : {test_rmse_svm}')
-
