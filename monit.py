@@ -81,9 +81,10 @@ with col4:
         
         # b = st.number_input("masukkan b")
         #    Centering Butoon 
-columns = st.columns((2, 2))
+columns = st.columns((2,3))
 sumbit = columns[1].button("Submit")
-if sumbit and suhuter != 0 and suhusen != 0 and phmet != 0 and phsen != 0:
+# if sumbit and suhuter != 0 and suhusen != 0 and phmet != 0 and phsen != 0:
+if submit:
             # cek jenis kelamin
             #0 = laki-laki
             #1 = perempuan
