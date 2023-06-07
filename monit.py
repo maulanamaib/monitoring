@@ -45,22 +45,22 @@ with st.sidebar:
 #             },
 #         }
     )
-tab1=st.tabs(["Cek Kualitas"])
+# tab1=st.tabs(["Cek Kualitas"])
 # """## Pengumpulan Data"""
-with tab1:
-    col1, col2 = st.columns(2)
-    with col1:
-          suhuter = st.number_input("Masukkan Suhu(termometer)",min_value=0,max_value=50)
-    with col2:
-          suhusen = st.number_input("Masukkan Suhu(sensor)",min_value=0, max_value=50)
+# with tab1:
+col1, col2 = st.columns(2)
+with col1:
+    suhuter = st.number_input("Masukkan Suhu(termometer)",min_value=0,max_value=50)
+with col2:
+    suhusen = st.number_input("Masukkan Suhu(sensor)",min_value=0, max_value=50)
 
 
     #     bp = st.selectbox("Golongan Darah",("A","B","AB","O"))
-    col3,col4 =st.columns(2)
-    with col3:    
-          phmet = st.number_input("Masukkan pH(ph meter)",min_value=0, max_value=50)
-    with col4:
-          phsen = st.number_input("masukkan pH(ph sensor)", min_value=0 ,max_value=50)
+col3,col4 =st.columns(2)
+with col3:    
+   phmet = st.number_input("Masukkan pH(ph meter)",min_value=0, max_value=50)
+with col4:
+   phsen = st.number_input("masukkan pH(ph sensor)", min_value=0 ,max_value=50)
             # col5, col6, col7, col8 = st.columns(4)
             # with col5:
             #     prot = st.number_input("Masukkan nilai prot")
@@ -82,14 +82,14 @@ with tab1:
 
             # b = st.number_input("masukkan b")
             #    Centering Butoon 
-    columns = st.columns((2,3))
+columns = st.columns((2,3))
 
 
-    submit = columns[1].button("Submit")
+submit = columns[1].button("Submit")
     # if sumbit and suhuter != 0 and suhusen != 0 and phmet != 0 and phsen != 0:
-    if submit:
-        data = dataset.modell([suhuter,suhusen,phmet,phsen])
-        prediksi = dataset.svr(data)    
+if submit:
+    data = dataset.modell([suhuter,suhusen,phmet,phsen])
+    prediksi = dataset.svr(data)    
                 # cek jenis kelamin
                 #0 = laki-laki
                 #1 = perempuan
@@ -103,8 +103,8 @@ with tab1:
                 # prediksi data
 
                 # cek prediksi
-        with st.spinner("Tunggu Sebentar Masih Proses..."):
-                prediksi
+    with st.spinner("Tunggu Sebentar Masih Proses..."):
+          prediksi
     #             if prediksi[-1]== 0:
     #                     # time.sleep(1)
     #                 st.success("Hasil Prediksi : "+nama+" dengan golongna darah  "+bp+"  sehat!!")
