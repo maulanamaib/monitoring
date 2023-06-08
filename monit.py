@@ -44,16 +44,11 @@ with st.sidebar:
 # with tab1:
 col1, col2 = st.columns(2)
 with col1:
-    suhuter = st.number_input("Masukkan Suhu(termometer)")
+      phsen = st.number_input("masukkan pH(ph sensor)")
+#     suhuter = st.number_input("Masukkan Suhu(termometer)")
 with col2:
     suhusen = st.number_input("Masukkan Suhu(sensor)")
 
-
-col3,col4 =st.columns(2)
-with col3:    
-   phmet = st.number_input("Masukkan pH(ph meter)")
-with col4:
-      phsen = st.number_input("masukkan pH(ph sensor)")
 
 columns = st.columns((2,3))
 
@@ -61,24 +56,24 @@ columns = st.columns((2,3))
 submit = columns[1].button("Submit")
     # if sumbit and suhuter != 0 and suhusen != 0 and phmet != 0 and phsen != 0:
 if submit:
-    temp =[suhuter,suhusen,phmet,phsen]
-    data = dataset.modell([suhuter,suhusen,phmet,phsen])
+    data = dataset.modell([suhusen,phsen])
     data = dataset.svr(data)
     data =  np.round(data)
+    print(data)
 
-    if(data[-1] == 1):
+    if(data[-2] == 0):
         st.write("Hasil Klasifikasi : (Berkualitas Atau Baik)")
     else:
         st.write("Hasil Klasifikasi : (Tidak Berkualitas Atau Buruk)")
     
-    cur = mydb['data']
-    cur.insert_one({
-        "Suhu(termometer)": suhuter,
-        "Suhu(sensor)": suhusen,
-        "pH(ph meter)": phmet,
-        "pH(sensor)": phsen,
-        "Klasifikasi": data[-1]
-    })
+    # cur = mydb['data']
+    # cur.insert_one({
+    #     "Suhu(termometer)": suhuter,
+    #     "Suhu(sensor)": suhusen,
+    #     "pH(ph meter)": phmet,
+    #     "pH(sensor)": phsen,
+    #     "Klasifikasi": data[-1]
+    # })
 
 
 
