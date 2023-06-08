@@ -25,7 +25,6 @@ def modell(x):
     return joblib.load('data/nana.sav').fit_transform(data_test)
 
 
-
 def svr(x):
     print(x)
     return joblib.load('data/SVRmodel.pkl').predict(x)
